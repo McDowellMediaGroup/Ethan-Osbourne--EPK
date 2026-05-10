@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ethan Osborne | Electronic Press Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --earth:    #1a1208;
+  --bark:     #2a1c0a;
+  --copper:   #c47a2a;
+  --gold:     #e8a830;
+  --wheat:    #f0c870;
+  --cream:    #f5edd8;
+  --warm:     #faf4e8;
+  --rust:     #8a3a10;
+  --sienna:   #b84820;
+  --pine:     #1a2a18;
+  --dusk:     #3a2010;
+  --muted:    #8a7458;
+  --fog:      rgba(245,237,216,0.06);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background: var(--earth);
+  color: var(--cream);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════
+   HERO — Golden Hour Sky
+══════════════════════════ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-sky {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 100% 55% at 50% 100%, #c47a2a 0%, transparent 55%),
+    radial-gradient(ellipse 70% 40% at 30% 95%,  #8a3a10 0%, transparent 50%),
+    radial-gradient(ellipse 70% 40% at 70% 95%,  #6a2a08 0%, transparent 50%),
+    radial-gradient(ellipse 90% 50% at 50% 88%,  #e8a830 0%, transparent 38%),
+    radial-gradient(ellipse 60% 35% at 50% 60%,  #3a2010 0%, transparent 55%),
+    linear-gradient(180deg,
+      #0a0d18 0%,
+      #121820 15%,
+      #1e1808 30%,
+      #2a1c08 45%,
+      #3a2010 60%,
+      #5a2e10 75%,
+      #8a4818 88%,
+      #b86820 100%);
+  z-index: 0;
+}
+
+/* Sun glow on horizon */
+.hero-sun {
+  position: absolute;
+  bottom: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%,
+    #fff8d0 0%,
+    #f5d060 25%,
+    #e8a030 55%,
+    transparent 75%);
+  box-shadow:
+    0 0 40px 20px rgba(232,160,48,0.6),
+    0 0 100px 50px rgba(200,120,30,0.4),
+    0 0 200px 100px rgba(160,80,10,0.25);
+  z-index: 1;
+  animation: sunPulse 5s ease-in-out infinite alternate;
+}
+@keyframes sunPulse {
+  from { box-shadow: 0 0 40px 20px rgba(232,160,48,0.6), 0 0 100px 50px rgba(200,120,30,0.4), 0 0 200px 100px rgba(160,80,10,0.25); }
+  to   { box-shadow: 0 0 60px 30px rgba(232,160,48,0.8), 0 0 130px 70px rgba(200,120,30,0.55), 0 0 260px 130px rgba(160,80,10,0.35); }
+}
+
+/* Light rays from sun */
+.sun-rays {
+  position: absolute;
+  bottom: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  z-index: 1;
+  pointer-events: none;
+  animation: raysRotate 20s linear infinite;
+}
+@keyframes raysRotate {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to   { transform: translateX(-50%) rotate(360deg); }
+}
+
+/* Texas pine tree silhouettes */
+.treeline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 280px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Ground */
+.hero-ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(0deg, #0a0804 0%, #1a1008 60%, transparent 100%);
+  z-index: 3;
+}
+
+/* Stars (upper sky only) */
+.stars-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  animation: twinkle var(--d,3s) ease-in-out infinite alternate;
+}
+@keyframes twinkle {
+  from { opacity: var(--o,0.6); }
+  to   { opacity: calc(var(--o,0.6)*0.15); }
+}
+
+/* Hero content */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 120px;
+}
+
+/* Artist photo in hero */
+.hero-photo-ring {
+  position: relative;
+  width: clamp(200px, 35vw, 320px);
+  height: clamp(200px, 35vw, 320px);
+  margin-bottom: 32px;
+  animation: riseIn 1.4s cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes riseIn {
+  from { opacity:0; transform:translateY(40px) scale(0.92); }
+  to   { opacity:1; transform:translateY(0) scale(1); }
+}
+
+.hero-photo-ring::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, var(--copper), var(--wheat), var(--gold), var(--copper));
+  z-index: -1;
+  animation: ringRotate 8s linear infinite;
+}
+@keyframes ringRotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.hero-photo-ring::after {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(232,168,48,0.35) 0%,
+    rgba(196,122,42,0.2) 40%,
+    transparent 70%);
+  z-index: -2;
+  animation: glowPulse 3s ease-in-out infinite alternate;
+}
+@keyframes glowPulse {
+  from { transform: scale(0.95); opacity:0.7; }
+  to   { transform: scale(1.08); opacity:1; }
+}
+
+.hero-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 4px solid var(--earth);
+  display: block;
+  filter: saturate(1.1) contrast(1.05);
+}
+
+/* Photo placeholder */
+.hero-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2a1c0a, #3a2810);
+  border: 4px solid var(--earth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+}
+.hero-photo-placeholder span {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: var(--copper);
+  opacity: 0.5;
+}
+
+.hero-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 9vw, 6rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  background: linear-gradient(160deg, var(--wheat) 0%, var(--gold) 40%, var(--copper) 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 24px rgba(232,168,48,0.5));
+  animation: fadeUp 1.6s cubic-bezier(0.16,1,0.3,1) 0.2s both;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.hero-rule {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  justify-content: center;
+  margin: 16px 0;
+  animation: fadeUp 1.6s cubic-bezier(0.16,1,0.3,1) 0.35s both;
+}
+.rule-line {
+  flex: 1;
+  max-width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--copper));
+}
+.rule-line.r { background: linear-gradient(90deg, var(--copper), transparent); }
+.rule-diamond {
+  width: 7px; height: 7px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  box-shadow: 0 0 10px var(--gold);
+}
+
+.hero-sub {
+  font-family: 'Raleway', sans-serif;
+  font-size: clamp(0.62rem, 1.8vw, 0.82rem);
+  letter-spacing: 0.45em;
+  color: var(--wheat);
+  text-transform: uppercase;
+  animation: fadeUp 1.6s cubic-bezier(0.16,1,0.3,1) 0.45s both;
+}
+
+.hero-tagline {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  color: rgba(245,237,216,0.55);
+  margin-top: 10px;
+  letter-spacing: 0.05em;
+  animation: fadeUp 1.6s cubic-bezier(0.16,1,0.3,1) 0.55s both;
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.4;
+  animation: bob 2.5s ease-in-out infinite;
+}
+.scroll-cue span {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.45em;
+  color: var(--wheat);
+  text-transform: uppercase;
+}
+.scroll-arrow {
+  width: 10px; height: 10px;
+  border-right: 1px solid var(--wheat);
+  border-bottom: 1px solid var(--wheat);
+  transform: rotate(45deg);
+}
+@keyframes bob {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ══════════════════════════
+   SECTIONS
+══════════════════════════ */
+.full-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(196,122,42,0.3), transparent);
+}
+
+.section-wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 88px 28px;
+}
+
+.section-label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.55em;
+  color: var(--copper);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 44px;
+  line-height: 1.1;
+}
+.section-title::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--copper), transparent);
+  margin-top: 14px;
+}
+
+/* ── ABOUT ── */
+.about-bg {
+  background: linear-gradient(180deg, var(--earth) 0%, #1e1408 50%, var(--earth) 100%);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+@media(max-width:780px){ .about-grid { grid-template-columns:1fr; } }
+
+.about-img-wrap {
+  position: relative;
+}
+.about-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  filter: sepia(0.1) saturate(1.1);
+}
+.about-img-placeholder {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: linear-gradient(180deg, #2a1c0a, #1a1008);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about-img-placeholder span {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  color: var(--copper);
+  opacity: 0.4;
+  text-transform: uppercase;
+}
+
+/* Warm film-strip frame */
+.about-img-frame {
+  position: absolute;
+  inset: -8px;
+  border: 1px solid rgba(196,122,42,0.35);
+  pointer-events: none;
+  z-index: 2;
+}
+.corner {
+  position: absolute;
+  width: 20px; height: 20px;
+  border-color: var(--gold);
+  border-style: solid;
+}
+.corner.tl { top:-12px; left:-12px; border-width:2px 0 0 2px; }
+.corner.tr { top:-12px; right:-12px; border-width:2px 2px 0 0; }
+.corner.bl { bottom:-12px; left:-12px; border-width:0 0 2px 2px; }
+.corner.br { bottom:-12px; right:-12px; border-width:0 2px 2px 0; }
+
+.feature-tag {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  right: 0;
+  background: linear-gradient(90deg, var(--rust), var(--sienna));
+  padding: 10px 20px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  color: var(--cream);
+  text-transform: uppercase;
+  text-align: center;
+  z-index: 3;
+}
+
+.about-text {
+  padding-top: 12px;
+}
+.about-text p {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
+  line-height: 1.95;
+  color: rgba(245,237,216,0.82);
+  margin-bottom: 20px;
+}
+
+.quote-block {
+  border-left: 2px solid var(--copper);
+  padding: 14px 24px;
+  margin: 28px 0;
+  background: rgba(196,122,42,0.05);
+}
+.quote-block p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: var(--wheat);
+  line-height: 1.7;
+  margin: 0;
+}
+.quote-attr {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--copper);
+  text-transform: uppercase;
+  margin-top: 10px;
+  display: block;
+}
+
+.genre-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+.tag {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  padding: 7px 18px;
+  border: 1px solid rgba(196,122,42,0.4);
+  color: var(--wheat);
+  text-transform: uppercase;
+  transition: all 0.25s;
+  cursor: default;
+}
+.tag:hover { background: var(--copper); color: var(--earth); border-color: var(--copper); }
+
+/* ── MUSIC ── */
+.music-bg {
+  background: linear-gradient(180deg, var(--earth) 0%, #100c04 50%, var(--earth) 100%);
+}
+
+.video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  margin-bottom: 44px;
+  overflow: hidden;
+}
+.video-frame::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, var(--copper), var(--rust), var(--copper));
+  z-index: 0;
+}
+.video-placeholder {
+  position: relative;
+  z-index: 1;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  margin: 2px;
+  background: #0a0804;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+}
+.video-placeholder span {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  color: var(--copper);
+  opacity: 0.5;
+  text-transform: uppercase;
+}
+.video-frame iframe {
+  position: relative;
+  z-index: 1;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  margin: 2px;
+  display: block;
+  background: #000;
+}
+
+.tracks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+}
+.track-card {
+  padding: 22px 18px;
+  border: 1px solid rgba(196,122,42,0.18);
+  background: rgba(255,255,255,0.02);
+  transition: all 0.25s;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+.track-card::before {
+  content: '';
+  position: absolute;
+  top:0; left:0; right:0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--copper), transparent);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+.track-card:hover::before { transform: scaleX(1); }
+.track-card:hover { border-color: var(--copper); background: rgba(196,122,42,0.05); transform: translateY(-3px); }
+.track-num { font-family:'Raleway',sans-serif; font-size:0.58rem; color:var(--copper); letter-spacing:0.35em; margin-bottom:9px; text-transform:uppercase; }
+.track-name { font-family:'Playfair Display',serif; font-size:0.88rem; color:var(--cream); }
+
+.track-placeholder {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  color: var(--copper);
+  opacity: 0.4;
+  text-transform: uppercase;
+  margin-top: 24px;
+  text-align: center;
+  padding: 20px;
+  border: 1px dashed rgba(196,122,42,0.2);
+}
+
+.spotify-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 34px;
+  padding: 15px 32px;
+  border: 1px solid #1DB954;
+  color: #1DB954;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.25s;
+}
+.spotify-btn:hover { background:#1DB954; color:var(--earth); }
+.spotify-btn svg { width:20px; height:20px; fill:currentColor; }
+
+/* ── PRESS ── */
+.press-bg {
+  background: linear-gradient(180deg, var(--earth) 0%, #1a1208 50%, var(--earth) 100%);
+}
+.press-card {
+  border: 1px solid rgba(196,122,42,0.25);
+  padding: 36px 40px;
+  background: rgba(196,122,42,0.03);
+  position: relative;
+  overflow: hidden;
+  max-width: 700px;
+}
+.press-card::before {
+  content: '"';
+  position: absolute;
+  top: -20px;
+  left: 24px;
+  font-family: 'Playfair Display', serif;
+  font-size: 8rem;
+  color: var(--copper);
+  opacity: 0.12;
+  line-height: 1;
+}
+.press-card p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  line-height: 1.8;
+  color: var(--cream);
+  margin-bottom: 20px;
+}
+.press-source {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  color: var(--copper);
+  text-transform: uppercase;
+}
+.press-source a {
+  color: var(--copper);
+  text-decoration: none;
+}
+.press-source a:hover { color: var(--gold); }
+
+/* ── LIVE ── */
+.live-photo-wrap {
+  position: relative;
+  width: 100%;
+  margin-bottom: 54px;
+  overflow: hidden;
+}
+.live-photo {
+  width: 100%;
+  max-height: 460px;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+  filter: sepia(0.15) contrast(1.1) saturate(1.1);
+}
+.live-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(26,18,8,0.75) 100%);
+}
+.live-photo-placeholder {
+  width: 100%;
+  height: 320px;
+  background: linear-gradient(135deg, #1a1008, #2a1810);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 54px;
+}
+.live-photo-placeholder span {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  color: var(--copper);
+  opacity: 0.35;
+  text-transform: uppercase;
+}
+
+.venues-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+@media(max-width:580px){ .venues-grid { grid-template-columns:1fr; } }
+
+.venue-item {
+  padding: 16px 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-right: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  transition: background 0.2s;
+}
+.venue-item:hover { background: rgba(196,122,42,0.05); }
+.venue-name { font-family:'Libre Baskerville',serif; font-size:0.82rem; color:var(--cream); }
+.venue-city { font-size:0.7rem; color:var(--muted); white-space:nowrap; }
+
+.avail-box {
+  margin-top: 44px;
+  padding: 26px 36px;
+  border: 1px solid rgba(196,122,42,0.3);
+  background: rgba(196,122,42,0.03);
+  text-align: center;
+  position: relative;
+}
+.avail-box::before {
+  content:''; position:absolute; top:0; left:0; right:0;
+  height:1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.avail-box p {
+  font-family:'Raleway',sans-serif;
+  font-size:0.78rem;
+  letter-spacing:0.22em;
+  color:var(--wheat);
+  text-transform: uppercase;
+}
+
+/* ── CONNECT ── */
+.connect-bg {
+  background: linear-gradient(180deg, var(--earth) 0%, #120e04 60%, var(--earth) 100%);
+}
+
+.socials {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 64px;
+}
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--cream);
+  text-decoration: none;
+  font-family:'Raleway',sans-serif;
+  font-size:0.68rem;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  transition: all 0.25s;
+}
+.social-link:hover { border-color:var(--copper); color:var(--wheat); transform:translateY(-3px); }
+.social-link svg { width:18px; height:18px; fill:currentColor; flex-shrink:0; }
+
+/* ── BOOKING ── */
+.booking-block {
+  border: 1px solid rgba(196,122,42,0.4);
+  padding: 56px 44px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 0%, rgba(196,122,42,0.08) 0%, transparent 65%);
+}
+.booking-block::before {
+  content:''; position:absolute; top:0; left:0; right:0;
+  height:1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.booking-block::after {
+  content:''; position:absolute; bottom:0; left:0; right:0;
+  height:1px;
+  background: linear-gradient(90deg, transparent, var(--copper), transparent);
+}
+
+.booking-title {
+  font-family:'Playfair Display',serif;
+  font-size: clamp(1.5rem,3.5vw,2.2rem);
+  font-weight: 700;
+  color:var(--cream);
+  margin-bottom:6px;
+}
+.booking-sub {
+  font-family:'Raleway',sans-serif;
+  font-size:0.68rem;
+  letter-spacing:0.38em;
+  color:var(--muted);
+  text-transform:uppercase;
+  margin-bottom:40px;
+}
+.contact-rows { display:flex; flex-direction:column; gap:16px; align-items:center; }
+.contact-row { display:flex; align-items:center; gap:18px; }
+.contact-label {
+  font-family:'Raleway',sans-serif;
+  font-size:0.58rem;
+  letter-spacing:0.45em;
+  color:var(--copper);
+  text-transform:uppercase;
+  min-width:58px;
+  text-align:right;
+}
+.contact-val {
+  font-size:1rem;
+  color:var(--cream);
+  text-decoration:none;
+  letter-spacing:0.04em;
+  transition:color 0.2s;
+  font-family:'Libre Baskerville',serif;
+}
+.contact-val:hover { color:var(--gold); }
+
+footer {
+  text-align:center;
+  padding:40px 24px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  font-family:'Raleway',sans-serif;
+  font-size:0.58rem;
+  letter-spacing:0.38em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+footer span { color:var(--copper); }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-sky"></div>
+  <div class="stars-layer" id="stars"></div>
+
+  <!-- Setting sun -->
+  <div class="hero-sun"></div>
+
+  <!-- Light rays SVG -->
+  <svg class="sun-rays" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(300,300)">
+      <line x1="0" y1="-280" x2="0" y2="280" stroke="rgba(232,168,48,0.04)" stroke-width="60"/>
+      <line x1="-280" y1="0" x2="280" y2="0" stroke="rgba(232,168,48,0.04)" stroke-width="60"/>
+      <line x1="-198" y1="-198" x2="198" y2="198" stroke="rgba(232,168,48,0.03)" stroke-width="50"/>
+      <line x1="198" y1="-198" x2="-198" y2="198" stroke="rgba(232,168,48,0.03)" stroke-width="50"/>
+      <line x1="-260" y1="-100" x2="260" y2="100" stroke="rgba(232,168,48,0.02)" stroke-width="40"/>
+      <line x1="100" y1="-260" x2="-100" y2="260" stroke="rgba(232,168,48,0.02)" stroke-width="40"/>
+      <line x1="-100" y1="-260" x2="100" y2="260" stroke="rgba(232,168,48,0.02)" stroke-width="40"/>
+      <line x1="260" y1="-100" x2="-260" y2="100" stroke="rgba(232,168,48,0.02)" stroke-width="40"/>
+    </g>
+  </svg>
+
+  <!-- Pine tree silhouette SVG -->
+  <svg class="treeline" viewBox="0 0 1440 280" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="treeGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#0a0c08" stop-opacity="0.98"/>
+        <stop offset="100%" stop-color="#080804" stop-opacity="1"/>
+      </linearGradient>
+    </defs>
+    <!-- Pine trees - various heights scattered -->
+    <g fill="url(#treeGrad)">
+      <!-- Far left cluster -->
+      <polygon points="20,240 35,130 50,240"/>
+      <polygon points="28,240 43,150 58,240"/>
+      <polygon points="45,240 62,110 79,240"/>
+      <polygon points="60,240 75,140 90,240"/>
+      <polygon points="75,240 90,160 105,240"/>
+      <!-- Left cluster -->
+      <polygon points="120,240 140,80 160,240"/>
+      <polygon points="140,240 158,100 176,240"/>
+      <polygon points="160,240 175,130 190,240"/>
+      <polygon points="185,240 200,90 215,240"/>
+      <!-- Center left -->
+      <polygon points="250,240 270,70 290,240"/>
+      <polygon points="270,240 285,110 300,240"/>
+      <polygon points="310,240 328,85 346,240"/>
+      <polygon points="340,240 355,120 370,240"/>
+      <!-- Center -->
+      <polygon points="420,240 442,60 464,240"/>
+      <polygon points="450,240 465,100 480,240"/>
+      <polygon points="480,240 495,130 510,240"/>
+      <polygon points="510,240 530,75 550,240"/>
+      <!-- Center right -->
+      <polygon points="600,240 618,90 636,240"/>
+      <polygon points="630,240 648,65 666,240"/>
+      <polygon points="660,240 675,110 690,240"/>
+      <polygon points="700,240 718,80 736,240"/>
+      <!-- Right cluster -->
+      <polygon points="780,240 800,70 820,240"/>
+      <polygon points="815,240 830,100 845,240"/>
+      <polygon points="845,240 860,130 875,240"/>
+      <polygon points="875,240 892,85 909,240"/>
+      <!-- Far right cluster -->
+      <polygon points="960,240 980,75 1000,240"/>
+      <polygon points="995,240 1012,55 1029,240"/>
+      <polygon points="1025,240 1042,90 1059,240"/>
+      <polygon points="1070,240 1088,70 1106,240"/>
+      <polygon points="1110,240 1125,105 1140,240"/>
+      <polygon points="1145,240 1162,80 1179,240"/>
+      <polygon points="1200,240 1218,60 1236,240"/>
+      <polygon points="1240,240 1255,95 1270,240"/>
+      <polygon points="1280,240 1298,75 1316,240"/>
+      <polygon points="1320,240 1335,110 1350,240"/>
+      <polygon points="1360,240 1378,85 1396,240"/>
+      <polygon points="1400,240 1415,130 1430,240"/>
+    </g>
+    <!-- Ground fill -->
+    <rect x="0" y="238" width="1440" height="42" fill="#080804"/>
+  </svg>
+
+  <div class="hero-ground"></div>
+
+  <!-- Hero content -->
+  <div class="hero-content">
+    <div class="hero-photo-ring">
+      <div class="hero-photo-placeholder">
+        <span>EO</span>
+      </div>
+    </div>
+    <div class="hero-name">Ethan Osborne</div>
+    <div class="hero-rule">
+      <div class="rule-line"></div>
+      <div class="rule-diamond"></div>
+      <div class="rule-line r"></div>
+    </div>
+    <div class="hero-sub">Singer · Songwriter &nbsp;·&nbsp; Beaumont, TX</div>
+    <div class="hero-tagline">Louisiana born. Texas raised. Real as it gets.</div>
+  </div>
+
+  <div class="scroll-cue">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<div class="full-divider"></div>
+<div class="about-bg">
+  <div class="section-wrap">
+    <div class="section-label">The Artist</div>
+    <div class="section-title">Ethan Osborne</div>
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <div class="about-img-placeholder">
+          <span>Photo Coming</span>
+        </div>
+        <div class="about-img-frame"></div>
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+        <div class="feature-tag">As Seen on KFDM — ARC Southeast Texas</div>
+      </div>
+      <div class="about-text">
+        <p>Born in Louisiana and raised in the heart of Southeast Texas, Ethan Osborne carries his roots into every note he plays. His music is a heartfelt blend of Southern grit and genuine Texas warmth — a true reflection of the life he's lived and the community that shaped him.</p>
+        <p>Ethan's connection to his fans runs as deep as his love for family and the people closest to him. Every song he writes is a tribute to those who support him, making him not just an artist, but a storyteller for his community.</p>
+        <p>Quickly gaining fans throughout Southeast Texas with regional media features and a growing live presence, Ethan Osborne's music is as real as it gets — resonating with anyone who values authenticity and heart.</p>
+        <div class="quote-block">
+          <p>Music that reflects real experiences — authentic, warm, and built for connection.</p>
+        </div>
+        <div class="genre-tags">
+          <span class="tag">Texas Country</span>
+          <span class="tag">Southern Soul</span>
+          <span class="tag">Americana</span>
+          <span class="tag">Singer-Songwriter</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PRESS ══ -->
+<div class="full-divider"></div>
+<div class="press-bg">
+  <div class="section-wrap">
+    <div class="section-label">Press & Media</div>
+    <div class="section-title">In The News</div>
+    <div class="press-card">
+      <p>Ethan Osborne is an up-and-coming singer and songwriter quickly gaining fans across Southeast Texas — performing throughout the region and building a loyal following with authentic music rooted in real life.</p>
+      <span class="press-source">— <a href="https://kfdm.com/news/arc-southeast-texas/ethan-osborne-talks-about-his-musical-career-on-arc-southeast-texas" target="_blank">KFDM News · ARC Southeast Texas Feature · September 2024</a></span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MUSIC ══ -->
+<div class="full-divider"></div>
+<div class="music-bg">
+  <div class="section-wrap">
+    <div class="section-label">Music</div>
+    <div class="section-title">Hear It</div>
+    <div class="video-frame">
+      <div class="video-placeholder">
+        <span>Video Coming Soon</span>
+      </div>
+    </div>
+    <div class="track-placeholder">
+      Song titles coming — check back soon
+    </div>
+    <a class="spotify-btn" href="https://open.spotify.com/artist/3DeD96AZxXfwx2ikUe8q6B" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+      Listen on Spotify
+    </a>
+  </div>
+</div>
+
+<!-- ══ LIVE ══ -->
+<div class="full-divider"></div>
+<div class="section-wrap">
+  <div class="section-label">On Stage</div>
+  <div class="section-title">Live & In Person</div>
+  <div class="live-photo-placeholder">
+    <span>Live Photo Coming</span>
+  </div>
+  <div class="section-label">Venue History</div>
+  <div class="venues-grid">
+    <div class="venue-item"><span class="venue-name">Clifford Distilling</span><span class="venue-city">Beaumont, TX</span></div>
+    <div class="venue-item"><span class="venue-name">More dates coming</span><span class="venue-city">Southeast TX</span></div>
+  </div>
+  <div class="avail-box">
+    <p>Upcoming Dates — Contact for Current Availability</p>
+  </div>
+</div>
+
+<!-- ══ CONNECT + BOOKING ══ -->
+<div class="full-divider"></div>
+<div class="connect-bg">
+  <div class="section-wrap">
+    <div class="section-label">Connect</div>
+    <div class="section-title">Find Ethan</div>
+    <div class="socials">
+      <a class="social-link" href="https://www.facebook.com/ethan.osborne1/" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>
+      <a class="social-link" href="https://www.instagram.com/ethanwayne10/" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        Instagram
+      </a>
+      <a class="social-link" href="https://www.tiktok.com/discover/ethan-osborne-music" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.77a4.85 4.85 0 01-1.02-.08z"/></svg>
+        TikTok
+      </a>
+    </div>
+
+    <div class="booking-block">
+      <div class="booking-title">Book Ethan Osborne</div>
+      <div class="booking-sub">For booking inquiries &amp; availability</div>
+      <div class="contact-rows">
+        <div class="contact-row">
+          <span class="contact-label">Phone</span>
+          <a class="contact-val" href="tel:4093384609">(409) 338-4609</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">Email</span>
+          <a class="contact-val" href="mailto:ethanosbornemusic@gmail.com">ethanosbornemusic@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  &copy; 2026 <span>Ethan Osborne</span> &nbsp;·&nbsp; All Rights Reserved &nbsp;·&nbsp; Beaumont, TX
+</footer>
+
+<script>
+const starsEl = document.getElementById('stars');
+for (let i = 0; i < 100; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  const size = Math.random() * 2.2 + 0.4;
+  const top = Math.random() * 55; // stars only in top 55% — above treeline
+  s.style.cssText = `width:${size}px;height:${size}px;top:${top}%;left:${Math.random()*100}%;--o:${(Math.random()*0.65+0.2).toFixed(2)};--d:${(Math.random()*5+2).toFixed(1)}s;animation-delay:${(Math.random()*5).toFixed(1)}s;`;
+  starsEl.appendChild(s);
+}
+</script>
+</body>
+</html>
